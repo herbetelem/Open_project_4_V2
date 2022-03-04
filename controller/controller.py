@@ -68,9 +68,6 @@ class ControllerRunGame:
             "player": "end"
         }
 
-    def start(self):
-        pass
-
     def manage_step(self):
         if self.m_game.step == "country":
             tmp_country = self.m_sql.get_country()
@@ -174,7 +171,7 @@ class ControllerRunGame:
 
                     if self.m_game.next_up:
                         # manage the creation of the name
-                        if self.m_game.step == "name" or game.step == "description" or game.step == "player":
+                        if self.m_game.step == "name" or self.m_game.step == "description" or self.m_game.step == "player":
                             self.c_key.keybord_abc()
                             if event.key == pygame.K_SPACE:
                                 self.c_key.keyboard_space()
