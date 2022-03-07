@@ -8,6 +8,7 @@ from models.players import Player as m_player
 from models.round import Round as m_round
 from models.sql_function import SqlFunction as m_sql
 from models.tournament import Tournament as m_tournament
+from models.load_a_tournament import LoadATournament as m_load_tourn
 
 # import view
 from vues.vue import VueBasic as v_vue_basic
@@ -138,7 +139,7 @@ class Game:
     # Method about the load of prev game
     def show_prev_matchs(self):
         if self.c_main.m_game.match_load:
-            load = self.sql.get_players_score(self.c_main.m_game.match_load)
+            load = self.c_main.m_sql.get_players_score(self.c_main.m_game.match_load)
             x = 50
             y = 50
             for data in load:
@@ -148,13 +149,13 @@ class Game:
             self.c_main.v_basic.manage_view(self.c_main.m_game.prev, self.c_main.m_game.prev_rect)
 
         else:
-            self.c_main.m_game.history = self.sql.get_prev_tournament()
+            self.c_main.m_game.history = self.c_main.m_sql.get_prev_tournament()
             x = 50
             y = 50
             self.c_main.m_game.history_button = []
             for tournament in self.c_main.m_game.history:
                 self.c_main.m_game.history_button.append(
-                    Load_a_tournament(y, x+1000, tournament[0][0]))
+                    m_load_tourn(y, x+1000, tournament[0][0]))
                 self.c_main.v_basic.print_sentence(tournament[0][1], self.c_main.m_game.font, (x, y))
                 y += 50
                 self.c_main.v_basic.print_sentence(tournament[0][2], self.c_main.m_game.font, (x, y))

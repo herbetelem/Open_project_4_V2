@@ -15,7 +15,7 @@ from models.sql_function import SqlFunction as m_sql
 # from controllers.event_key import EventKey as c_event_key
 # from controllers.round import Round as c_round
 # from controllers.tournament import Tournament as c_tournament
-from controllers.add_player import AddPlayer as c_add_player
+from models.add_player import AddPlayer as c_add_player
 
 # create class game
 
