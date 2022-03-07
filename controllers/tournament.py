@@ -58,12 +58,12 @@ class Tournament:
             sentence = "Please, choose the town"
             self.c_main.v_basic.print_sentence(sentence)
             self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
-            data = self.c_main.m_sql.get_town(self.tournament.country)
+            data = self.c_main.m_sql.get_town(self.c_main.m_tournament.country)
         elif self.c_main.m_game.step == "location":
             sentence = "Please, choose the location"
             self.c_main.v_basic.print_sentence(sentence)
             self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
-            data = self.c_main.m_sql.get_location(self.tournament.town)
+            data = self.c_main.m_sql.get_location(self.c_main.m_tournament.town)
 
         sentence_tmp = pygame.font.Font(None, 130).render(
             "<  " + str(data[self.c_main.m_game.index_location][1]) + "  >",
@@ -129,7 +129,7 @@ class Tournament:
         self.c_main.v_basic.print_sentence("Please enter the tournament's description")
         input = self.c_main.v_basic.set_an_image('assets/button/input.png', (700, 150))
         self.c_main.v_basic.manage_view(input, (((1280 - 700) / 2), 300))
-        text_tmp = self.tournament.description
+        text_tmp = self.c_main.m_tournament.description
         text_y = 320
         while len(text_tmp) > 0:
             font = pygame.font.Font(None, 35)
@@ -137,7 +137,7 @@ class Tournament:
                 text_tmp[:50], font, (((1280 - 700) / 2 + 10), text_y))
             text_tmp = text_tmp[50:]
             text_y += 30
-        if len(self.tournament.description) > 0:
+        if len(self.c_main.m_tournament.description) > 0:
             self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
 
     def create_tournament_player(self):
@@ -194,16 +194,16 @@ class Tournament:
         """ Method to save the tournament in the bdd """
         # save the tournament in the db
         data = (self.c_main.m_tournament.name,
-                self.tournament.location[0],
-                self.tournament.nb_turn,
-                self.tournament.description,
-                self.tournament.time,
-                self.tournament.date
+                self.c_main.m_tournament.location[0],
+                self.c_main.m_tournament.nb_turn,
+                self.c_main.m_tournament.description,
+                self.c_main.m_tournament.time,
+                self.c_main.m_tournament.date
                 )
         self.c_main.m_sql.create_tournament(data, self.players)
-        self.tournament.id = self.c_main.m_sql.get_tournament_id(
-            [self.c_main.m_tournament.name, self.tournament.description, self.tournament.date])
-        self.tournament.id = self.tournament.id[0][0]
+        self.c_main.m_tournament.id = self.c_main.m_sql.get_tournament_id(
+            [self.c_main.m_tournament.name, self.c_main.m_tournament.description, self.c_main.m_tournament.date])
+        self.c_main.m_tournament.id = self.c_main.m_tournament.id[0][0]
         self.c_main.m_game.step = "next"
 
     def resume_tournament(self):
@@ -212,19 +212,19 @@ class Tournament:
         list_resume = [["Tournament resume", pygame.font.Font(None, 35), (340, 50)],
                        [f"Name: {self.c_main.m_tournament.name}",
                            pygame.font.Font(None, 35), (340, 100)],
-                       [f"Country: {self.tournament.country}",
+                       [f"Country: {self.c_main.m_tournament.country}",
                            pygame.font.Font(None, 35), (340, 150)],
-                       [f"Town: {self.tournament.town}",
+                       [f"Town: {self.c_main.m_tournament.town}",
                            pygame.font.Font(None, 35), (340, 200)],
-                       [f"Location: {self.tournament.location}",
+                       [f"Location: {self.c_main.m_tournament.location}",
                            pygame.font.Font(None, 35), (340, 250)],
-                       [f"Date: {self.tournament.date}",
+                       [f"Date: {self.c_main.m_tournament.date}",
                            pygame.font.Font(None, 35), (340, 300)],
-                       [f"Time: {self.tournament.time}",
+                       [f"Time: {self.c_main.m_tournament.time}",
                            pygame.font.Font(None, 35), (340, 350)],
-                       [f"Description: {self.tournament.description}",
+                       [f"Description: {self.c_main.m_tournament.description}",
                            pygame.font.Font(None, 35), (340, 400)],
-                       [f"Players: {self.tournament.players}", pygame.font.Font(None, 35), (340, 450)]]
+                       [f"Players: {self.c_main.m_tournament.players}", pygame.font.Font(None, 35), (340, 450)]]
         for resume in list_resume:
             self.c_main.v_basic.print_sentence(resume[0], resume[1], resume[2])
         self.c_main.v_basic.manage_view(self.start, self.start_rect)

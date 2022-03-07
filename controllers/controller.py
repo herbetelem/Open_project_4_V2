@@ -172,26 +172,26 @@ class ControllerRunGame:
         if self.m_game.step == "country":
             tmp_country = self.m_sql.get_country()
             tmp_country = tmp_country[self.m_game.index_location]
-            self.m_game.tournament.country = tmp_country
+            self.m_tournament.country = tmp_country
         if self.m_game.step == "town":
-            tmp_town = self.m_sql.get_town(self.m_game.tournament.country)
+            tmp_town = self.m_sql.get_town(self.m_tournament.country)
             tmp_town = tmp_town[self.m_game.index_location]
-            self.m_game.tournament.town = tmp_town
+            self.m_tournament.town = tmp_town
         if self.m_game.step == "location":
-            tmp_location = self.m_sql.get_location(self.m_game.tournament.town)
+            tmp_location = self.m_sql.get_location(self.m_tournament.town)
             tmp_location = tmp_location[self.m_game.index_location]
-            self.m_game.tournament.location = tmp_location
+            self.m_tournament.location = tmp_location
         if self.m_game.step == "date":
-            self.m_game.tournament.date = f"{self.m_tournament.day.str}/{self.m_tournament.month.str}/{self.m_tournament.year.str}"
+            self.m_tournament.date = f"{self.m_tournament.day.str}/{self.m_tournament.month.str}/{self.m_tournament.year.str}"
         if self.m_game.step == "time":
             if self.m_game.choice == 1:
-                self.m_game.tournament.time = "bullet"
+                self.m_tournament.time = "bullet"
             elif self.m_game.choice == 2:
-                self.m_game.tournament.time = "blitz"
+                self.m_tournament.time = "blitz"
             elif self.m_game.choice == 3:
-                self.m_game.tournament.time = "coup rapide"
+                self.m_tournament.time = "coup rapide"
         if self.m_game.step == "player" and len(self.m_game.players) == 8:
-            self.m_game.tournament.players = self.m_game.players
+            self.m_tournament.players = self.m_game.players
             self.m_game.step = self.step[self.m_game.step]
             self.m_game.index_location = 0
         elif self.m_game.step != "player":
