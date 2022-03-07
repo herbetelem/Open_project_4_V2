@@ -26,18 +26,18 @@ class EventMouse():
             self.c_main.m_game.tournament.created = True
 
     def manage_date(self, event):
-        if self.c_main.m_game.day.rect.collidepoint(event.pos):
-            if self.c_main.m_game.day.str == 31:
-                self.c_main.m_game.day.str = 1
+        if self.c_main.m_tournament.day.rect.collidepoint(event.pos):
+            if self.c_main.m_tournament.day.str == 31:
+                self.c_main.m_tournament.day.str = 1
             else:
-                self.c_main.m_game.day.str += 1
-        if self.c_main.m_game.month.rect.collidepoint(event.pos):
-            if self.c_main.m_game.month.str == 12:
-                self.c_main.m_game.month.str = 1
+                self.c_main.m_tournament.day.str += 1
+        if self.c_main.m_tournament.month.rect.collidepoint(event.pos):
+            if self.c_main.m_tournament.month.str == 12:
+                self.c_main.m_tournament.month.str = 1
             else:
-                self.c_main.m_game.month.str += 1
-        if self.c_main.m_game.year.rect.collidepoint(event.pos):
-            self.c_main.m_game.year.str += 1
+                self.c_main.m_tournament.month.str += 1
+        if self.c_main.m_tournament.year.rect.collidepoint(event.pos):
+            self.c_main.m_tournament.year.str += 1
 
     def manage_time(self, event):
         if self.c_main.m_game.choice_A_rect.collidepoint(event.pos):

@@ -77,9 +77,9 @@ class Tournament:
         font_date = pygame.font.Font(None, 70)
         self.c_main.v_basic.print_sentence("Please choose the date")
         self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
-        self.c_main.v_basic.print_sentence(str(self.day.str), font_date, self.day.rect)
-        self.c_main.v_basic.print_sentence(str(self.month.str), font_date, self.month.rect)
-        self.c_main.v_basic.print_sentence(str(self.year.str), font_date, self.year.rect)
+        self.c_main.v_basic.print_sentence(str(self.c_main.m_tournament.day.str), font_date, self.c_main.m_tournament.day.rect)
+        self.c_main.v_basic.print_sentence(str(self.c_main.m_tournament.month.str), font_date, self.c_main.m_tournament.month.rect)
+        self.c_main.v_basic.print_sentence(str(self.c_main.m_tournament.year.str), font_date, self.c_main.m_tournament.year.rect)
 
     def create_tournament_time(self):
         """ Methode for select the type of time """
