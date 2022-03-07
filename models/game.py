@@ -16,6 +16,7 @@ from vues.vue import VueBasic as v_vue_basic
 # from controllers.event_key import EventKey as c_event_key
 # from controllers.round import Round as c_round
 from controllers.tournament import Tournament as c_tournament
+from controllers.add_player import AddPlayer as c_add_player
 
 # create class game
 
@@ -81,8 +82,6 @@ class Game:
         self.choice_B = ""
         self.choice_C = ""
         self.index_location = 0
-        self.c_main.c_tournament.set_time()
-        self.c_main.c_tournament.set_round_time()
 
         # set the button more and less
         self.more = self.font_turn.render("+", 1, (255, 255, 255))
@@ -101,21 +100,8 @@ class Game:
         list_search_location = [[245, 190], [345, 190], [445, 190], [
             545, 190], [245, 640], [345, 640], [445, 640], [545, 640]]
         for i in list_search_location:
-            self.tmp_players.append(Add_player(i[0], i[1], False, 0))
+            self.tmp_players.append(c_add_player(i[0], i[1], False, 0))
 
-        # all method for the create
-        self.switch_tournament = {
-            "name": self.create_tournament_name,
-            "country": self.create_tournament_place,
-            "town": self.create_tournament_place,
-            "location": self.create_tournament_place,
-            "date": self.create_tournament_date,
-            "time": self.create_tournament_time,
-            "description": self.create_tournament_description,
-            "player": self.create_tournament_player,
-            "end": self.create_tournament_end,
-            "next": self.resume_tournament
-        }
 
     def set_var_game(self):
         """ Method who will set the variables that will be used for game """

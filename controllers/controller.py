@@ -25,33 +25,39 @@ class ControllerRunGame:
 
     def __init__(self):
         pygame.init()
-        
+
         # windows
         pygame.display.set_caption('Checkmate Tournament')
         self.screen = pygame.display.set_mode((1280, 720))
         # set object
         self.v_basic = v_vue_basic(self)
+
         self.m_tournament = m_tournament()
         self.c_tournament = c_tournament(self)
         self.m_game = m_game(self)
         self.c_game = c_game(self)
         self.m_sql = m_sql()
+
+        #  INIT POUR SPLIT LES DEPENDENCE
+        self.c_tournament.set_time()
+        self.c_tournament.set_round_time()
+
         # load bg
-        self.background = self.v_vue.set_an_image(
-            '../assets/bg.jpg', (1280, 720))
+        self.background = self.v_basic.set_an_image(
+            'assets/bg.jpg', (1280, 720))
         # create button and rect for first menu
-        self.play_button = self.v_vue.set_an_image(
-            '../assets/button/new_game.png')
-        self.play_button_rect = self.v_vue.set_an_image_rec(self.play_button, math.ceil(
+        self.play_button = self.v_basic.set_an_image(
+            'assets/button/new_game.png', (400, 100))
+        self.play_button_rect = self.v_basic.set_an_image_rec(self.play_button, math.ceil(
             self.screen .get_width() / 4) - 50, math.ceil(self.screen .get_height() / 2))
 
-        self.load_button = self.v_vue.set_an_image(
-            '../assets/button/load_game.png', (400, 100))
-        self.load_button_rect = self.v_vue.set_an_image_rec(self.load_button, math.ceil(
+        self.load_button = self.v_basic.set_an_image(
+            'assets/button/load_game.png', (400, 100))
+        self.load_button_rect = self.v_basic.set_an_image_rec(self.load_button, math.ceil(
             self.screen .get_width() / 4) * 2 + 50, math.ceil(self.screen .get_height() / 2))
         # * HH Charge la Favicon
         self.icon_32x32 = pygame.image.load(
-            "../assets/favicon.png").convert_alpha()
+            "assets/favicon.png").convert_alpha()
         # * HH Applique la Favicon
         pygame.display.set_icon(self.icon_32x32)
         # manage the game
@@ -69,8 +75,8 @@ class ControllerRunGame:
         }
 
     def run(self):
-        self.c_key = c_event_key(self.m_game)
-        self.c_mouse = c_event_mouse(self.m_game, self)
+        self.c_key = c_event_key(self)
+        self.c_mouse = c_event_mouse(self)
 
         while self.running:
             if self.m_game.is_launch or self.m_game.load:
@@ -162,7 +168,6 @@ class ControllerRunGame:
                                     if event.key == pygame.K_BACKSPACE:
                                         self.c_key.keyboard_backspace()
 
-
     def manage_step(self):
         if self.m_game.step == "country":
             tmp_country = self.m_sql.get_country()
@@ -192,4 +197,3 @@ class ControllerRunGame:
         elif self.m_game.step != "player":
             self.m_game.step = self.step[self.m_game.step]
             self.m_game.index_location = 0
-

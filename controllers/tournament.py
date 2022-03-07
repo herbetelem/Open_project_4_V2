@@ -14,6 +14,21 @@ class Tournament:
     def __init__(self, c_main):
         self.c_main = c_main
 
+
+        # all method for the create
+        self.switch_tournament = {
+            "name": self.create_tournament_name,
+            "country": self.create_tournament_place,
+            "town": self.create_tournament_place,
+            "location": self.create_tournament_place,
+            "date": self.create_tournament_date,
+            "time": self.create_tournament_time,
+            "description": self.create_tournament_description,
+            "player": self.create_tournament_player,
+            "end": self.create_tournament_end,
+            "next": self.resume_tournament
+        }
+
     # Method about the creation
     def create_tournament(self):
         """ Method to manage the step of creation of the Tournament """
