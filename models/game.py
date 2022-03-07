@@ -1,21 +1,20 @@
 import pygame
-from turtle import pd
 
 # import model
 # from models.game import Game as m_game
 # from models.players import Player as m_player
 # from models.round import Round as m_round
 from models.sql_function import SqlFunction as m_sql
-from models.tournament import Tournament as m_tournament
+# from models.tournament import Tournament as m_tournament
 
 # import view
-from vues.vue import VueBasic as v_vue_basic
+# from vues.vue import VueBasic as v_vue_basic
 
 # # import controller
 # from controllers.event_mouse import EventMouse as c_event_mouse
 # from controllers.event_key import EventKey as c_event_key
 # from controllers.round import Round as c_round
-from controllers.tournament import Tournament as c_tournament
+# from controllers.tournament import Tournament as c_tournament
 from controllers.add_player import AddPlayer as c_add_player
 
 # create class game

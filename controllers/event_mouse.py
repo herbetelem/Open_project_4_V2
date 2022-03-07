@@ -7,153 +7,153 @@ class EventMouse():
         self.c_main = c_main
 
     def manage_first_menu(self, event):
-        if self.main.play_button_rect.collidepoint(event.pos):
-            self.game.is_launch = True
-            self.game.step = "name"
-        if self.main.load_button_rect.collidepoint(event.pos):
-            self.game.load = True
+        if self.c_main.play_button_rect.collidepoint(event.pos):
+            self.c_main.m_game.is_launch = True
+            self.c_main.m_game.step = "name"
+        if self.c_main.load_button_rect.collidepoint(event.pos):
+            self.c_main.m_game.load = True
 
     def manage_load_button(self, event):
-        for button in self.game.history_button:
+        for button in self.c_main.m_game.history_button:
             if button.rect.collidepoint(event.pos):
-                self.game.match_load = button.id_tournament
-            if self.game.prev_rect.collidepoint(event.pos):
-                self.game.match_load = False
+                self.c_main.m_game.match_load = button.id_tournament
+            if self.c_main.m_game.prev_rect.collidepoint(event.pos):
+                self.c_main.m_game.match_load = False
 
     def manage_end_creation(self):
-        if self.game.tournament.created is False:
-            self.game.set_var_game()
-            self.game.tournament.created = True
+        if self.c_main.m_game.tournament.created is False:
+            self.c_main.m_game.set_var_game()
+            self.c_main.m_game.tournament.created = True
 
     def manage_date(self, event):
-        if self.game.day.rect.collidepoint(event.pos):
-            if self.game.day.str == 31:
-                self.game.day.str = 1
+        if self.c_main.m_game.day.rect.collidepoint(event.pos):
+            if self.c_main.m_game.day.str == 31:
+                self.c_main.m_game.day.str = 1
             else:
-                self.game.day.str += 1
-        if self.game.month.rect.collidepoint(event.pos):
-            if self.game.month.str == 12:
-                self.game.month.str = 1
+                self.c_main.m_game.day.str += 1
+        if self.c_main.m_game.month.rect.collidepoint(event.pos):
+            if self.c_main.m_game.month.str == 12:
+                self.c_main.m_game.month.str = 1
             else:
-                self.game.month.str += 1
-        if self.game.year.rect.collidepoint(event.pos):
-            self.game.year.str += 1
+                self.c_main.m_game.month.str += 1
+        if self.c_main.m_game.year.rect.collidepoint(event.pos):
+            self.c_main.m_game.year.str += 1
 
     def manage_time(self, event):
-        if self.game.choice_A_rect.collidepoint(event.pos):
-            self.game.choice = 1
-        if self.game.choice_B_rect.collidepoint(event.pos):
-            self.game.choice = 2
-        if self.game.choice_C_rect.collidepoint(event.pos):
-            self.game.choice = 3
+        if self.c_main.m_game.choice_A_rect.collidepoint(event.pos):
+            self.c_main.m_game.choice = 1
+        if self.c_main.m_game.choice_B_rect.collidepoint(event.pos):
+            self.c_main.m_game.choice = 2
+        if self.c_main.m_game.choice_C_rect.collidepoint(event.pos):
+            self.c_main.m_game.choice = 3
 
     def manage_player(self, event):
-        for button in self.game.tmp_players:
+        for button in self.c_main.m_game.tmp_players:
             if button.rect.collidepoint(event.pos):
-                if button.id_player not in self.game.players and \
-                        len(self.game.players_search) > 0:
-                    self.game.players.append(button.id_player)
-                    self.game.players_search = ""
-                    self.game.step = "player"
+                if button.id_player not in self.c_main.m_game.players and \
+                        len(self.c_main.m_game.players_search) > 0:
+                    self.c_main.m_game.players.append(button.id_player)
+                    self.c_main.m_game.players_search = ""
+                    self.c_main.m_game.step = "player"
 
     def manage_button_edit(self, event):
-        for player in self.game.round.players:
+        for player in self.c_main.m_game.round.players:
             if player.rect.collidepoint(event.pos):
-                for all_player in self.game.round.players:
-                    all_player.img = self.game.set_an_image(
+                for all_player in self.c_main.m_game.round.players:
+                    all_player.img = self.c_main.m_game.set_an_image(
                         'assets/button/editer.png', (150, 50))
                     all_player.selected = False
-                player.img = self.game.set_an_image(
+                player.img = self.c_main.m_game.set_an_image(
                     'assets/button/editer-check.png', (150, 50))
                 player.selected = True
     
     def validate_round_check(self, event):
-        if self.game.validate_rect.collidepoint(event.pos):
-            self.game.round.generate_round()
-            self.game.round.settings = False
+        if self.c_main.m_game.validate_rect.collidepoint(event.pos):
+            self.c_main.m_game.round.generate_round()
+            self.c_main.m_game.round.settings = False
 
             ###### RENDRE GENERIQUE #############
-            self.game.deck_1 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-            self.game.deck_2 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-            self.game.deck_3 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-            self.game.deck_4 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+            self.c_main.m_game.deck_1 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+            self.c_main.m_game.deck_2 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+            self.c_main.m_game.deck_3 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+            self.c_main.m_game.deck_4 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
             ###### RENDRE GENERIQUE #############
     
     def manage_deck(self, event):
         ###### RENDRE GENERIQUE #############
-        if self.game.deck_1_rect.collidepoint(event.pos):
-            self.game.deck_1 = self.main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
-            self.game.round.match[0][2] = 3
+        if self.c_main.m_game.deck_1_rect.collidepoint(event.pos):
+            self.c_main.m_game.deck_1 = self.c_main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
+            self.c_main.m_game.round.match[0][2] = 3
 
-        elif self.game.area_win_1.collidepoint(event.pos):
-            self.game.deck_1 = self.main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
-            self.game.round.match[0][2] = 1
+        elif self.c_main.m_game.area_win_1.collidepoint(event.pos):
+            self.c_main.m_game.deck_1 = self.c_main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
+            self.c_main.m_game.round.match[0][2] = 1
 
-        elif self.game.area_win_2.collidepoint(event.pos):
-            self.game.deck_1 = self.main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
-            self.game.round.match[0][2] = 2
+        elif self.c_main.m_game.area_win_2.collidepoint(event.pos):
+            self.c_main.m_game.deck_1 = self.c_main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
+            self.c_main.m_game.round.match[0][2] = 2
 
         #  Manage Game desk 2
-        if self.game.deck_2_rect.collidepoint(event.pos):
-            self.game.deck_2 = self.main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
-            self.game.round.match[1][2] = 3
+        if self.c_main.m_game.deck_2_rect.collidepoint(event.pos):
+            self.c_main.m_game.deck_2 = self.c_main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
+            self.c_main.m_game.round.match[1][2] = 3
 
-        elif self.game.area_win_3.collidepoint(event.pos):
-            self.game.deck_2 = self.main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
-            self.game.round.match[1][2] = 1
+        elif self.c_main.m_game.area_win_3.collidepoint(event.pos):
+            self.c_main.m_game.deck_2 = self.c_main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
+            self.c_main.m_game.round.match[1][2] = 1
 
-        elif self.game.area_win_4.collidepoint(event.pos):
-            self.game.deck_2 = self.main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
-            self.game.round.match[1][2] = 2
+        elif self.c_main.m_game.area_win_4.collidepoint(event.pos):
+            self.c_main.m_game.deck_2 = self.c_main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
+            self.c_main.m_game.round.match[1][2] = 2
 
         #  Manage Game desk 3
-        if self.game.deck_3_rect.collidepoint(event.pos):
-            self.game.deck_3 = self.main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
-            self.game.round.match[2][2] = 3
+        if self.c_main.m_game.deck_3_rect.collidepoint(event.pos):
+            self.c_main.m_game.deck_3 = self.c_main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
+            self.c_main.m_game.round.match[2][2] = 3
 
-        elif self.game.area_win_5.collidepoint(event.pos):
-            self.game.deck_3 = self.main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
-            self.game.round.match[2][2] = 1
+        elif self.c_main.m_game.area_win_5.collidepoint(event.pos):
+            self.c_main.m_game.deck_3 = self.c_main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
+            self.c_main.m_game.round.match[2][2] = 1
 
-        elif self.game.area_win_6.collidepoint(event.pos):
-            self.game.deck_3 = self.main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
-            self.game.round.match[2][2] = 2
+        elif self.c_main.m_game.area_win_6.collidepoint(event.pos):
+            self.c_main.m_game.deck_3 = self.c_main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
+            self.c_main.m_game.round.match[2][2] = 2
 
         #  Manage Game desk 4
-        if self.game.deck_4_rect.collidepoint(event.pos):
-            self.game.deck_4 = self.main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
-            self.game.round.match[3][2] = 3
+        if self.c_main.m_game.deck_4_rect.collidepoint(event.pos):
+            self.c_main.m_game.deck_4 = self.c_main.v_vue.set_an_image('../assets/match-nul.png', (140, 140))
+            self.c_main.m_game.round.match[3][2] = 3
 
-        elif self.game.area_win_7.collidepoint(event.pos):
-            self.game.deck_4 = self.main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
-            self.game.round.match[3][2] = 1
+        elif self.c_main.m_game.area_win_7.collidepoint(event.pos):
+            self.c_main.m_game.deck_4 = self.c_main.v_vue.set_an_image('../assets/match-win-1.png', (140, 140))
+            self.c_main.m_game.round.match[3][2] = 1
 
-        elif self.game.area_win_8.collidepoint(event.pos):
-            self.game.deck_4 = self.main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
-            self.game.round.match[3][2] = 2
+        elif self.c_main.m_game.area_win_8.collidepoint(event.pos):
+            self.c_main.m_game.deck_4 = self.c_main.v_vue.set_an_image('../assets/match-win-2.png', (140, 140))
+            self.c_main.m_game.round.match[3][2] = 2
         ###### RENDRE GENERIQUE #############
         pass
 
     def validate_round(self, event):
-        if self.game.validate_rect.collidepoint(event.pos):
+        if self.c_main.m_game.validate_rect.collidepoint(event.pos):
             result = []
-            for match in self.game.round.match:
+            for match in self.c_main.m_game.round.match:
                 result.append(match[2])
-            self.game.round.validate_round(result)
-            if self.game.round.nb_turn < 7:
-                self.game.round.generate_round()
+            self.c_main.m_game.round.validate_round(result)
+            if self.c_main.m_game.round.nb_turn < 7:
+                self.c_main.m_game.round.generate_round()
                 ########### RENDRE GENERIQUE #############
-                self.game.deck_1 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-                self.game.deck_2 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-                self.game.deck_3 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
-                self.game.deck_4 = self.main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+                self.c_main.m_game.deck_1 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+                self.c_main.m_game.deck_2 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+                self.c_main.m_game.deck_3 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
+                self.c_main.m_game.deck_4 = self.c_main.v_vue.set_an_image('../assets/match-no-result.png', (140, 140))
             else:
-                self.game.game_statut = False
+                self.c_main.m_game.game_statut = False
                 ########### RENDRE GENERIQUE #############
 
     def update_score(self, event):
             # Mannage save
-        for player in self.game.round.players:
-            self.game.sql.save_score(
-                (player.id, self.game.tournament.id, player.score))
-        self.game = Game(self.game.screen)
+        for player in self.c_main.m_game.round.players:
+            self.c_main.m_game.sql.save_score(
+                (player.id, self.c_main.m_game.tournament.id, player.score))
+        self.c_main.m_game = Game(self.c_main.m_game.screen)

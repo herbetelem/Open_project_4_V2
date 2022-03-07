@@ -30,7 +30,7 @@ class ControllerRunGame:
         pygame.display.set_caption('Checkmate Tournament')
         self.screen = pygame.display.set_mode((1280, 720))
         # set object
-        self.v_basic = v_vue_basic(self)
+        self.v_basic = v_vue_basic(self.screen)
 
         self.m_tournament = m_tournament()
         self.c_tournament = c_tournament(self)
@@ -83,9 +83,9 @@ class ControllerRunGame:
                 self.c_game.update()
             else:
                 # app the image of first menu
-                self.screen.blit(self.background, (0, 0))
-                self.screen.blit(self.play_button, self.play_button_rect)
-                self.screen.blit(self.load_button, self.load_button_rect)
+                self.v_basic.manage_view(self.background, (0,0))
+                self.v_basic.manage_view(self.play_button, self.play_button_rect)
+                self.v_basic.manage_view(self.load_button, self.load_button_rect)
 
             # update the screen
             pygame.display.flip()

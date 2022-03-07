@@ -9,6 +9,8 @@ class VueBasic:
 
     def __init__(self, screen):
         self.screen = screen
+        self.font = pygame.font.Font(None, 55)
+        self.font_turn = pygame.font.Font(None, 90)
 
     
     # Method general

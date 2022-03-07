@@ -11,32 +11,32 @@ class EventKey:
         touche = pygame.key.get_pressed()
         for (l, value) in letters.items():
             if touche[value]:
-                if self.game.step == "name":
-                    if len(self.game.tournament.description) < 50:
-                        self.game.tournament.name = self.game.tournament.name + \
+                if self.c_main.m_game.step == "name":
+                    if len(self.c_main.m_tournament.description) < 50:
+                        self.c_main.m_tournament.name = self.c_main.m_tournament.name + \
                             str(l)
-                elif self.game.step == "description":
-                    if len(self.game.tournament.description) < 200:
-                        self.game.tournament.description = self.game.tournament.description + \
+                elif self.c_main.m_game.step == "description":
+                    if len(self.c_main.m_tournament.description) < 200:
+                        self.c_main.m_tournament.description = self.c_main.m_tournament.description + \
                             str(l)
-                elif self.game.step == "player":
+                elif self.c_main.m_game.step == "player":
                     self.game.players_search = self.game.players_search + \
                         str(l)
 
     def keyboard_space(self):
-        if self.game.step == "name":
-            self.game.tournament.name = self.game.tournament.name + " "
-        elif self.game.step == "description":
-            self.game.tournament.description = self.game.tournament.description + " "
-        elif self.game.step == "player":
+        if self.c_main.m_game.step == "name":
+            self.c_main.m_tournament.name = self.c_main.m_tournament.name + " "
+        elif self.c_main.m_game.step == "description":
+            self.c_main.m_tournament.description = self.c_main.m_tournament.description + " "
+        elif self.c_main.m_game.step == "player":
             self.game.players_search = self.game.players_search + " "
 
     def keyboard_backspace(self):
-        if self.game.step == "name":
-            self.game.tournament.name = self.game.tournament.name[:-1]
-        elif self.game.step == "description":
-            self.game.tournament.description = self.game.tournament.description[:-1]
-        elif self.game.step == "player":
+        if self.c_main.m_game.step == "name":
+            self.c_main.m_tournament.name = self.c_main.m_tournament.name[:-1]
+        elif self.c_main.m_game.step == "description":
+            self.c_main.m_tournament.description = self.c_main.m_tournament.description[:-1]
+        elif self.c_main.m_game.step == "player":
             self.game.players_search = self.game.players_search[:-1]
 
     def keyboard_coutry(self, event, sql):
@@ -54,20 +54,20 @@ class EventKey:
             self.game.index_location -= 1
             if self.game.index_location < 0:
                 self.game.index_location = len(
-                    self.game.sql.get_town(self.game.tournament.country)) - 1
+                    self.game.sql.get_town(self.c_main.m_tournament.country)) - 1
         elif event.key == pygame.K_RIGHT:
             self.game.index_location += 1
-            if self.game.index_location >= len(sql.get_town(self.game.tournament.country)):
+            if self.game.index_location >= len(sql.get_town(self.c_main.m_tournament.country)):
                 self.game.index_location = 0
 
     def keyboard_location(self, event, sql):
         if event.key == pygame.K_LEFT:
             self.game.index_location -= 1
             if self.game.index_location < 0:
-                self.game.index_location = len(sql.get_location(self.game.tournament.town)) - 1
+                self.game.index_location = len(sql.get_location(self.c_main.m_tournament.town)) - 1
         elif event.key == pygame.K_RIGHT:
             self.game.index_location += 1
-            if self.game.index_location >= len(sql.get_location(self.game.tournament.town)):
+            if self.game.index_location >= len(sql.get_location(self.c_main.m_tournament.town)):
                 self.game.index_location = 0
 
     def keyboard_num(self, event):
