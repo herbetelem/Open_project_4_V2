@@ -87,9 +87,9 @@ class Tournament:
         self.c_main.v_basic.print_sentence("Please choose the time style")
         self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
         self.set_round_time()
-        self.c_main.v_basic.manage_view(self.game.choice_A, self.game.choice_A_rect)
-        self.c_main.v_basic.manage_view(self.game.choice_B, self.game.choice_B_rect)
-        self.c_main.v_basic.manage_view(self.game.choice_C, self.game.choice_C_rect)
+        self.c_main.v_basic.manage_view(self.c_main.m_game.choice_A, self.c_main.m_game.choice_A_rect)
+        self.c_main.v_basic.manage_view(self.c_main.m_game.choice_B, self.c_main.m_game.choice_B_rect)
+        self.c_main.v_basic.manage_view(self.c_main.m_game.choice_C, self.c_main.m_game.choice_C_rect)
         self.c_main.v_basic.print_sentence("bullet", self.c_main.m_game.font, (130, 310))
         self.c_main.v_basic.print_sentence("blitz", self.c_main.m_game.font, (530, 310))
         self.c_main.v_basic.print_sentence("speed shot", self.c_main.m_game.font, (930, 310))
@@ -143,33 +143,33 @@ class Tournament:
     def create_tournament_player(self):
         """ Methode for select the player of the tournament """
 
-        tmp_p = 8 - len(self.players)
+        tmp_p = 8 - len(self.c_main.m_game.players)
         self.c_main.v_basic.print_sentence(
             f"Please select the {tmp_p} players", self.c_main.m_game.font, (340, 50))
 
         # check if all the players have been selected
-        if len(self.players) == 8:
+        if len(self.c_main.m_game.players) == 8:
             self.c_main.v_basic.manage_view(self.c_main.m_game.next, self.c_main.m_game.next_rect)
         else:
             input = self.c_main.v_basic.set_an_image('assets/button/input.png', (600, 75))
             self.c_main.v_basic.manage_view(input, (310, 100))
-            self.c_main.v_basic.manage_view(self.search_button, self.search_button_rect)
-            self.c_main.v_basic.print_sentence(self.players_search, self.c_main.m_game.font, (330, 120))
+            self.c_main.v_basic.manage_view(self.c_main.m_game.search_button, self.c_main.m_game.search_button_rect)
+            self.c_main.v_basic.print_sentence(self.c_main.m_game.players_search, self.c_main.m_game.font, (330, 120))
             self.c_main.v_basic.print_sentence("player name", self.c_main.m_game.font, (20, 120))
             self.search_player()
 
     def search_player(self):
         """ method to search the players """
 
-        if len(self.players_search) > 0:
+        if len(self.c_main.m_game.players_search) > 0:
             # get the list of player in the bdd
-            request = self.c_main.m_sql.get_players(self.players_search)
+            request = self.c_main.m_sql.get_players(self.c_main.m_game.players_search)
             index = 0
             tmp_x = 250
             tmp_y = 250
 
             # set up the button to false, in case of less than 8 result
-            for tmp in self.tmp_players:
+            for tmp in self.c_main.m_game.tmp_players:
                 tmp.show = False
             for player in request:
                 font = pygame.font.Font(None, 35)
@@ -180,14 +180,14 @@ class Tournament:
                     tmp_x = 700
                 else:
                     tmp_y += 100
-                self.tmp_players[index].show = True
-                self.tmp_players[index].id_player = player[0]
+                self.c_main.m_game.tmp_players[index].show = True
+                self.c_main.m_game.tmp_players[index].id_player = player[0]
                 index += 1
 
             # check if the player has been already selected or if the button have to be seen
-            for tmp in self.tmp_players:
+            for tmp in self.c_main.m_game.tmp_players:
                 if tmp.show:
-                    if tmp.id_player not in self.players:
+                    if tmp.id_player not in self.c_main.m_game.players:
                         self.c_main.v_basic.manage_view(tmp.img, tmp.rect)
 
     def create_tournament_end(self):
@@ -200,7 +200,7 @@ class Tournament:
                 self.c_main.m_tournament.time,
                 self.c_main.m_tournament.date
                 )
-        self.c_main.m_sql.create_tournament(data, self.players)
+        self.c_main.m_sql.create_tournament(data, self.c_main.m_game.players)
         self.c_main.m_tournament.id = self.c_main.m_sql.get_tournament_id(
             [self.c_main.m_tournament.name, self.c_main.m_tournament.description, self.c_main.m_tournament.date])
         self.c_main.m_tournament.id = self.c_main.m_tournament.id[0][0]
@@ -227,5 +227,5 @@ class Tournament:
                        [f"Players: {self.c_main.m_tournament.players}", pygame.font.Font(None, 35), (340, 450)]]
         for resume in list_resume:
             self.c_main.v_basic.print_sentence(resume[0], resume[1], resume[2])
-        self.c_main.v_basic.manage_view(self.start, self.start_rect)
+        self.c_main.v_basic.manage_view(self.c_main.m_game.start, self.c_main.m_game.start_rect)
         self.c_main.m_game.next_up = False

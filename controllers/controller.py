@@ -93,7 +93,7 @@ class ControllerRunGame:
             for event in pygame.event.get():
                 # if leaving
                 if event.type == pygame.QUIT:
-                    running = False
+                    self.running = False
                     pygame.quit()
                     self.m_sql.connector.close()
                     print("le jeu ce ferme")
