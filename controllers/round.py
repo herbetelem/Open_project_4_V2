@@ -77,7 +77,7 @@ class Round:
         self.c_main.m_round.hour_end[self.c_main.m_round.nb_turn] = datetime.now(
         ).strftime('%H-%M')
         for match in self.c_main.m_round.match:
-            self.c_main.m_sql.save_round((self.c_main.m_tournament.id_tournament, match[0].id, match[1].id, match[2], self.c_main.m_round.name, self.c_main.m_round.date_start[self.c_main.m_round.nb_turn],
+            self.c_main.m_sql.save_round((self.c_main.m_tournament.id, match[0].id, match[1].id, match[2], self.c_main.m_round.name, self.c_main.m_round.date_start[self.c_main.m_round.nb_turn],
                                 self.c_main.m_round.date_end[self.c_main.m_round.nb_turn], self.c_main.m_round.hour_start[self.c_main.m_round.nb_turn], self.c_main.m_round.hour_end[self.c_main.m_round.nb_turn]))
         for index in range(4):
             # attribution of score
