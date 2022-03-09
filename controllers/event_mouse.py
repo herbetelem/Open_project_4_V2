@@ -21,9 +21,9 @@ class EventMouse():
                 self.c_main.m_game.match_load = False
 
     def manage_end_creation(self):
-        if self.c_main.m_game.tournament.created is False:
+        if self.c_main.m_tournament.created is False:
             self.c_main.m_game.set_var_game()
-            self.c_main.m_game.tournament.created = True
+            self.c_main.m_tournament.created = True
 
     def manage_date(self, event):
         if self.c_main.m_tournament.day.rect.collidepoint(event.pos):

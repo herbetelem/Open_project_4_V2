@@ -8,7 +8,7 @@ from controllers.round import Round as c_round
 # create class round
 class Round:
 
-    def __init__(self, players, id_tournament, round):
+    def __init__(self, id_tournament):
         """ Class to manage the round
 
         Args:
@@ -28,9 +28,3 @@ class Round:
         self.match_done = []
         self.nb_turn = 0
         self.settings = False
-
-        self.c_round = c_round(self)
-        players = self.c_round.get_players_info(players)
-        for player in players:
-            self.players.append(
-                m_player(player[0], player[2], player[1], player[3]))

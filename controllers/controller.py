@@ -128,7 +128,7 @@ class ControllerRunGame:
                         if self.m_game.game_statut:
 
                             # if the settings have been selected
-                            if self.m_game.round.settings:
+                            if self.m_round.settings:
                                 self.c_mouse.manage_button_edit(event)
                                 self.c_mouse.validate_round_check(event)
                             else:
@@ -140,7 +140,7 @@ class ControllerRunGame:
                                 elif self.m_game.update_score_rect.collidepoint(event.pos):
                                     self.m_game.round.settings = True
                         # Mannage save
-                        if self.m_game.round.nb_turn == 7 and self.m_game.save_rect.collidepoint(event.pos):
+                        if self.m_round.nb_turn == 7 and self.m_game.save_rect.collidepoint(event.pos):
                             self.c_mouse.update_score(event)
                 # if use keyboard
                 elif event.type == pygame.KEYDOWN:
@@ -197,3 +197,8 @@ class ControllerRunGame:
         elif self.m_game.step != "player":
             self.m_game.step = self.step[self.m_game.step]
             self.m_game.index_location = 0
+
+    def set_round(self):
+        self.m_round = m_round(self.m_tournament.id)
+        self.c_round = c_round(self, self.m_game.players)
+        self.c_round.generate_round()

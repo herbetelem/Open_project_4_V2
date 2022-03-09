@@ -3,7 +3,7 @@ import pygame
 # import model
 # from models.game import Game as m_game
 # from models.players import Player as m_player
-# from models.round import Round as m_round
+from models.round import Round as m_round
 from models.sql_function import SqlFunction as m_sql
 # from models.tournament import Tournament as m_tournament
 
@@ -13,7 +13,7 @@ from models.sql_function import SqlFunction as m_sql
 # # import controller
 # from controllers.event_mouse import EventMouse as c_event_mouse
 # from controllers.event_key import EventKey as c_event_key
-# from controllers.round import Round as c_round
+from controllers.round import Round as c_round
 # from controllers.tournament import Tournament as c_tournament
 from models.add_player import AddPlayer as c_add_player
 
@@ -116,8 +116,7 @@ class Game:
             self.update_score, 750, 650)
         self.save =  self.c_main.v_basic.set_an_image('assets/button/save.png', (150, 50))
         self.save_rect =  self.c_main.v_basic.set_an_image_rec(self.save, 600, 600)
-        self.round = Round(self.players, self.m_tournament.id)
-        self.round.generate_round()
+        self.c_main.set_round()
         self.player_selected = 0
 
         # generate all the desck object
