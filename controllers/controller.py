@@ -113,7 +113,8 @@ class ControllerRunGame:
                     # manage the next step of creation of a tournament
                     elif self.m_game.next_up and self.m_game.next_rect.collidepoint(event.pos):
                         self.manage_step()
-                    elif self.m_game.next_up is False and self.m_game.start_rect.collidepoint(event.pos):
+                    elif self.m_game.next_up is False and \
+                        self.m_game.start_rect.collidepoint(event.pos):
                         self.c_mouse.manage_end_creation()
 
                     if self.m_game.next_up:
@@ -144,14 +145,16 @@ class ControllerRunGame:
                                 elif self.m_game.update_score_rect.collidepoint(event.pos):
                                     self.m_round.settings = True
                         # Mannage save
-                        if self.m_round.nb_turn == 7 and self.m_game.save_rect.collidepoint(event.pos):
+                        if self.m_round.nb_turn == 7 and \
+                            self.m_game.save_rect.collidepoint(event.pos):
                             self.c_mouse.update_score(event)
                 # if use keyboard
                 elif event.type == pygame.KEYDOWN:
 
                     if self.m_game.next_up:
                         # manage the creation of the name
-                        if self.m_game.step == "name" or self.m_game.step == "description" or self.m_game.step == "player":
+                        if self.m_game.step == "name" or self.m_game.step == "description" or \
+                            self.m_game.step == "player":
                             self.c_key.keybord_abc()
                             if event.key == pygame.K_SPACE:
                                 self.c_key.keyboard_space()
