@@ -21,6 +21,8 @@ from controllers.tournament import Tournament as c_tournament
 
 
 class ControllerRunGame:
+    """Object controller for the all program
+    """
 
     def __init__(self):
         pygame.init()
@@ -74,6 +76,9 @@ class ControllerRunGame:
         }
 
     def run(self):
+        """method to run the game
+        """
+
         self.c_key = c_event_key(self)
         self.c_mouse = c_event_mouse(self)
 
@@ -168,6 +173,8 @@ class ControllerRunGame:
                                         self.c_key.keyboard_backspace()
 
     def manage_step(self):
+        """method to manage the step of creation for the tournament
+        """
         if self.m_game.step == "country":
             tmp_country = self.m_sql.get_country()
             tmp_country = tmp_country[self.m_game.index_location]
@@ -198,6 +205,8 @@ class ControllerRunGame:
             self.m_game.index_location = 0
 
     def set_round(self):
+        """method to generate the first round one the tournament have been set
+        """
         self.m_round = m_round(self.m_tournament.id)
         self.c_round = c_round(self, self.m_game.players)
         self.c_round.generate_round()
