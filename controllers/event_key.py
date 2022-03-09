@@ -76,7 +76,7 @@ class EventKey:
         touche = pygame.key.get_pressed()
         for (l, value) in letters.items():
             if touche[value]:
-                for player in self.c_main.m_game.round.players:
+                for player in self.c_main.m_r ound.players:
                     if player.selected:
                         player.score = int(
                             str(player.score) + str(l))

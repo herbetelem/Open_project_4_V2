@@ -132,7 +132,7 @@ class Game:
         x = 900
         y = 40
         for player in self.c_main.m_round.players:
-            player.rect = self.set_an_image_rec(player.img, x, y)
+            player.rect = self.c_main.v_basic.set_an_image_rec(player.img, x, y)
             self.c_main.v_basic.manage_view(player.img, player.rect)
             y += 70
 

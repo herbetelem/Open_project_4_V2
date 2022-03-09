@@ -60,10 +60,10 @@ class EventMouse():
         for player in self.c_main.m_round.players:
             if player.rect.collidepoint(event.pos):
                 for all_player in self.c_main.m_round.players:
-                    all_player.img = self.c_main.m_game.set_an_image(
+                    all_player.img = self.c_main.v_basic.set_an_image(
                         'assets/button/editer.png', (150, 50))
                     all_player.selected = False
-                player.img = self.c_main.m_game.set_an_image(
+                player.img = self.c_main.v_basic.set_an_image(
                     'assets/button/editer-check.png', (150, 50))
                 player.selected = True
     

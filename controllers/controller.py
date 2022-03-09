@@ -138,7 +138,7 @@ class ControllerRunGame:
                                 if self.m_game.validate_rect.collidepoint(event.pos):
                                     self.c_mouse.validate_round(event)
                                 elif self.m_game.update_score_rect.collidepoint(event.pos):
-                                    self.m_game.round.settings = True
+                                    self.m_round.settings = True
                         # Mannage save
                         if self.m_round.nb_turn == 7 and self.m_game.save_rect.collidepoint(event.pos):
                             self.c_mouse.update_score(event)
@@ -163,7 +163,7 @@ class ControllerRunGame:
                     else:
                         if self.m_game.next_up is False:
                             if self.m_game.game_statut:
-                                if self.m_game.round.settings:
+                                if self.m_round.settings:
                                     self.c_key.keyboard_num(event)
                                     if event.key == pygame.K_BACKSPACE:
                                         self.c_key.keyboard_backspace()
