@@ -1,10 +1,13 @@
+""" Module Round """
+
 from datetime import datetime
 
 from models.players import Player as m_player
 
 
-
 class Round:
+    """ Object to manage the method who will impact the round
+    """
 
     def __init__(self, c_main, players):
         self.c_main = c_main
@@ -22,11 +25,7 @@ class Round:
         Returns:
             [type]: list of players with their rank
         """
-        if self.c_main.m_round.nb_turn == 0:
-            players = self.c_main.m_sql.get_players_rank(players)
-            return players
-        else:
-            return
+        return self.c_main.m_sql.get_players_rank(players)
 
     def generate_round(self):
         """ Methode to generate the round """
@@ -52,9 +51,11 @@ class Round:
             if not is_player_choosed and index_match < 4:
                 found = False
                 for order in list_order:
-                    if self.c_main.m_round.players[order] not in player.matched and not list_adv[order] and not found:
+                    if self.c_main.m_round.players[order] not in player.matched and \
+                            not list_adv[order] and not found:
                         self.c_main.m_round.match[index_match][0] = player
-                        self.c_main.m_round.match[index_match][1] = self.c_main.m_round.players[order]
+                        self.c_main.m_round.match[index_match][1] = \
+                            self.c_main.m_round.players[order]
                         list_adv[order] = True
                         is_player_choosed = True
                         found = True
@@ -77,8 +78,12 @@ class Round:
         self.c_main.m_round.hour_end[self.c_main.m_round.nb_turn] = datetime.now(
         ).strftime('%H-%M')
         for match in self.c_main.m_round.match:
-            self.c_main.m_sql.save_round((self.c_main.m_tournament.id, match[0].id, match[1].id, match[2], self.c_main.m_round.name, self.c_main.m_round.date_start[self.c_main.m_round.nb_turn],
-                                self.c_main.m_round.date_end[self.c_main.m_round.nb_turn], self.c_main.m_round.hour_start[self.c_main.m_round.nb_turn], self.c_main.m_round.hour_end[self.c_main.m_round.nb_turn]))
+            self.c_main.m_sql.save_round((self.c_main.m_tournament.id, match[0].id, match[1].id,
+                                          match[2], self.c_main.m_round.name,
+                                          self.c_main.m_round.date_start[self.c_main.m_round.nb_turn],
+                                          self.c_main.m_round.date_end[self.c_main.m_round.nb_turn],
+                                          self.c_main.m_round.hour_start[self.c_main.m_round.nb_turn],
+                                          self.c_main.m_round.hour_end[self.c_main.m_round.nb_turn]))
         for index in range(4):
             # attribution of score
             self.c_main.m_round.match[index][0].score += score[results[index]][0]
