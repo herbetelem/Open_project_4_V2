@@ -1,3 +1,5 @@
+""" Module main """
+
 from controllers.controller import ControllerRunGame
 
 def main():
