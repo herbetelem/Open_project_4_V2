@@ -154,6 +154,6 @@ class EventMouse():
     def update_score(self, event):
             # Mannage save
         for player in self.c_main.m_round.players:
-            self.c_main.m_game.sql.save_score(
-                (player.id, self.c_main.m_game.tournament.id, player.score))
-        self.c_main.m_game = Game(self.c_main.m_game.screen)
+            self.c_main.m_sql.save_score(
+                (player.id, self.c_main.m_tournament.id, player.score))
+        self.c_main.m_game = Game(self.c_main)

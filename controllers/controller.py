@@ -5,13 +5,12 @@ import pygame
 
 # import model
 from models.game import Game as m_game
-from models.players import Player as m_player
 from models.round import Round as m_round
 from models.sql_function import SqlFunction as m_sql
 from models.tournament import Tournament as m_tournament
 
 # import view
-from vues.vue import VueBasic as v_vue_basic
+from views.view import VueBasic as v_vue_basic
 
 # import controller
 from controllers.event_mouse import EventMouse as c_event_mouse

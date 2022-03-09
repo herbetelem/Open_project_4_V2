@@ -1,24 +1,8 @@
 # import python
-import pygame
 from turtle import pd
 
 # import model
-from models.game import Game as m_game
-from models.players import Player as m_player
-from models.round import Round as m_round
-from models.sql_function import SqlFunction as m_sql
-from models.tournament import Tournament as m_tournament
 from models.load_a_tournament import LoadATournament as m_load_tourn
-
-# import view
-from vues.vue import VueBasic as v_vue_basic
-
-# import controller
-from controllers.event_mouse import EventMouse as c_event_mouse
-from controllers.event_key import EventKey as c_event_key
-from controllers.round import Round as c_round
-from controllers.tournament import Tournament as c_tournament
-
 
 # create class game
 
@@ -116,7 +100,7 @@ class Game:
             self.c_main.v_basic.print_sentence(
                 f"Place {index}: {self.c_main.m_round.players[index-1].name} {self.c_main.m_round.players[index-1].last_name}, score = {self.c_main.m_round.players[index-1].score}", self.c_main.m_game.font, (x, y))
             y += 70
-        self.c_main.v_basic.manage_view(self.save, self.save_rect)
+        self.c_main.v_basic.manage_view(self.c_main.m_game.save, self.c_main.m_game.save_rect)
 
     def show_settings(self):
         """ Method for show the score during a tournament and edit it """

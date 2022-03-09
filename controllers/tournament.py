@@ -1,8 +1,6 @@
 import pygame
 
 from models.date import Date_selected as m_date
-# import view
-from vues.vue import VueBasic as v_vue_basic
 
 # create class game
 
