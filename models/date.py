@@ -1,3 +1,5 @@
+""" Module date """
+
 from datetime import datetime
 import pygame
 

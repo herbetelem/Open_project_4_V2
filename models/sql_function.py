@@ -1,3 +1,5 @@
+""" Module sql function """
+
 import sqlite3
 
 # class who will do the request SQL
