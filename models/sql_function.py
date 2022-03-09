@@ -169,7 +169,7 @@ class SqlFunction():
         results = []
         for index in result:
             self.cursor.execute(
-                f"SELECT id, name, date FROM tournament WHERE id={index[0]} ORDER BY id DESC LIMIT 6;")
+                f"SELECT id, name, date FROM tournament WHERE id={index[0]} ORDER BY id DESC LIMIT 5;")
             results.append(self.cursor.fetchall())
         return results
 
