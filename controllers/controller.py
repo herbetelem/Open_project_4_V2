@@ -147,7 +147,7 @@ class ControllerRunGame:
                         # Mannage save
                         if self.m_round.nb_turn == 7 and \
                             self.m_game.save_rect.collidepoint(event.pos):
-                            self.c_mouse.update_score(event)
+                            self.c_mouse.update_score()
                 # if use keyboard
                 elif event.type == pygame.KEYDOWN:
 
