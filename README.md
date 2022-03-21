@@ -28,6 +28,12 @@ Into your file use comand ``pip install -r requirement.txt`` for install all lib
 Just Use this commmand ``python main.py``
 
 
+## Flake8-html
+
+the flake8 have been generate into the folder flake-report
+If you want to generate an other one une this command ``flake8 --format=html --htmldir=flake-report --max-line-length=119``
+
+
 ## Functional
 
 On the first menu choose whether you want to load tournament data, or create a new one
