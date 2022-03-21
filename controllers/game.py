@@ -163,15 +163,18 @@ class Game:
             self.c_main.m_game.history = self.c_main.m_sql.get_prev_tournament()
             x = 50
             y = 50
+            i = 0
             self.c_main.m_game.history_button = []
             for tournament in self.c_main.m_game.history:
-                self.c_main.m_game.history_button.append(
-                    m_load_tourn(y, x+1000, tournament[0][0]))
-                self.c_main.v_basic.print_sentence(
-                    tournament[0][1], self.c_main.m_game.font, (x, y))
-                y += 50
-                self.c_main.v_basic.print_sentence(
-                    tournament[0][2], self.c_main.m_game.font, (x, y))
-                y += 50
+                if i < 5:
+                    self.c_main.m_game.history_button.append(
+                        m_load_tourn(y, x+1000, tournament[0][0]))
+                    self.c_main.v_basic.print_sentence(
+                        tournament[0][1], self.c_main.m_game.font, (x, y))
+                    y += 50
+                    self.c_main.v_basic.print_sentence(
+                        tournament[0][2], self.c_main.m_game.font, (x, y))
+                    y += 50
+                i += 1
             for index in self.c_main.m_game.history_button:
                 self.c_main.v_basic.manage_view(index.img, index.rect)
