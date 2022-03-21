@@ -31,23 +31,29 @@ class Game:
         self.history_button = []
 
         # set the different background
-        self.background =  self.c_main.v_basic.set_an_image('assets/bg-2.jpeg', (1280, 720))
-        self.background_2 =  self.c_main.v_basic.set_an_image('assets/bg-3.jpeg', (1280, 720))
-        self.background_3 =  self.c_main.v_basic.set_an_image('assets/bg-4.jpeg', (1280, 720))
+        self.background = self.c_main.v_basic.set_an_image(
+            'assets/bg-2.jpeg', (1280, 720))
+        self.background_2 = self.c_main.v_basic.set_an_image(
+            'assets/bg-3.jpeg', (1280, 720))
+        self.background_3 = self.c_main.v_basic.set_an_image(
+            'assets/bg-4.jpeg', (1280, 720))
 
         # set the button next or start
-        self.next =  self.c_main.v_basic.set_an_image('assets/button/next.png', (400, 150))
-        self.next_rect =  self.c_main.v_basic.set_an_image_rec(
+        self.next = self.c_main.v_basic.set_an_image(
+            'assets/button/next.png', (400, 150))
+        self.next_rect = self.c_main.v_basic.set_an_image_rec(
             self.next, (1280 - 400) / 2, 500)
-        self.start =  self.c_main.v_basic.set_an_image('assets/button/start.png', (400, 150))
-        self.start_rect =  self.c_main.v_basic.set_an_image_rec(
+        self.start = self.c_main.v_basic.set_an_image(
+            'assets/button/start.png', (400, 150))
+        self.start_rect = self.c_main.v_basic.set_an_image_rec(
             self.start, (1280 - 400) / 2, 500)
-        self.search_button =  self.c_main.v_basic.set_an_image(
+        self.search_button = self.c_main.v_basic.set_an_image(
             'assets/button/search.png', (50, 50))
-        self.search_button_rect =  self.c_main.v_basic.set_an_image_rec(
+        self.search_button_rect = self.c_main.v_basic.set_an_image_rec(
             self.search_button, 940, 125)
-        self.prev =  self.c_main.v_basic.set_an_image('assets/button/prev.png', (400, 150))
-        self.prev_rect =  self.c_main.v_basic.set_an_image_rec(
+        self.prev = self.c_main.v_basic.set_an_image(
+            'assets/button/prev.png', (400, 150))
+        self.prev_rect = self.c_main.v_basic.set_an_image_rec(
             self.prev, (1280 - 400) / 2, 500)
 
         self.next_up = True
@@ -85,21 +91,23 @@ class Game:
         for i in list_search_location:
             self.tmp_players.append(c_add_player(i[0], i[1], False, 0))
 
-
     def set_var_game(self):
         """ Method who will set the variables that will be used for game """
 
         #  set the button object tha will be used for the management of the tournament
         self.game_statut = True
-        self.validate =  self.c_main.v_basic.set_an_image(
+        self.validate = self.c_main.v_basic.set_an_image(
             'assets/button/validate.png', (150, 50))
-        self.validate_rect =  self.c_main.v_basic.set_an_image_rec(self.validate, 550, 650)
-        self.update_score =  self.c_main.v_basic.set_an_image(
+        self.validate_rect = self.c_main.v_basic.set_an_image_rec(
+            self.validate, 550, 650)
+        self.update_score = self.c_main.v_basic.set_an_image(
             'assets/button/setting.png', (50, 50))
-        self.update_score_rect =  self.c_main.v_basic.set_an_image_rec(
+        self.update_score_rect = self.c_main.v_basic.set_an_image_rec(
             self.update_score, 750, 650)
-        self.save =  self.c_main.v_basic.set_an_image('assets/button/save.png', (150, 50))
-        self.save_rect =  self.c_main.v_basic.set_an_image_rec(self.save, 600, 600)
+        self.save = self.c_main.v_basic.set_an_image(
+            'assets/button/save.png', (150, 50))
+        self.save_rect = self.c_main.v_basic.set_an_image_rec(
+            self.save, 600, 600)
         self.c_main.set_round()
         self.player_selected = 0
 
@@ -159,8 +167,10 @@ class Game:
             tuple: all pygame object
         """
 
-        deck =  self.c_main.v_basic.set_an_image('assets/match-no-result.png', (140, 140))
-        deck_rect =  self.c_main.v_basic.set_an_image_rec(deck, deck_rect_x, deck_rect_y)
+        deck = self.c_main.v_basic.set_an_image(
+            'assets/match-no-result.png', (140, 140))
+        deck_rect = self.c_main.v_basic.set_an_image_rec(
+            deck, deck_rect_x, deck_rect_y)
         area_win_A = pygame.Rect((area_A_x, area_A_y), (150, 40))
         area_rect_win_A = pygame.Surface(area_win_A.size)
         area_rect_win_A.set_alpha(0)

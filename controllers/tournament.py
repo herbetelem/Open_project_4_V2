@@ -236,8 +236,7 @@ class Tournament:
                 )
         self.c_main.m_sql.create_tournament(data, self.c_main.m_game.players)
         self.c_main.m_tournament.id = self.c_main.m_sql.get_tournament_id(
-            [self.c_main.m_tournament.name, self.c_main.m_tournament.description, \
-                self.c_main.m_tournament.date])
+            [self.c_main.m_tournament.name, self.c_main.m_tournament.description, self.c_main.m_tournament.date])
         self.c_main.m_tournament.id = self.c_main.m_tournament.id[0][0]
         self.c_main.m_game.step = "next"
 
@@ -259,8 +258,7 @@ class Tournament:
                            pygame.font.Font(None, 35), (340, 350)],
                        [f"Description: {self.c_main.m_tournament.description}",
                            pygame.font.Font(None, 35), (340, 400)],
-                       [f"Players: {self.c_main.m_tournament.players}", \
-                           pygame.font.Font(None, 35), (340, 450)]]
+                       [f"Players: {self.c_main.m_tournament.players}", pygame.font.Font(None, 35), (340, 450)]]
         for resume in list_resume:
             self.c_main.v_basic.print_sentence(resume[0], resume[1], resume[2])
         self.c_main.v_basic.manage_view(

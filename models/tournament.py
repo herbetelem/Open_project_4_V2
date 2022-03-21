@@ -1,5 +1,6 @@
 """ module tournament"""
 
+
 class Tournament:
     """Object of the tournament
     """

@@ -112,7 +112,6 @@ class EventMouse():
             self.c_main.c_round.generate_round()
             self.c_main.m_round.settings = False
 
-            ###### RENDRE GENERIQUE #############
             self.c_main.m_game.deck_1 = self.c_main.v_basic.set_an_image(
                 'assets/match-no-result.png', (140, 140))
             self.c_main.m_game.deck_2 = self.c_main.v_basic.set_an_image(
@@ -121,7 +120,6 @@ class EventMouse():
                 'assets/match-no-result.png', (140, 140))
             self.c_main.m_game.deck_4 = self.c_main.v_basic.set_an_image(
                 'assets/match-no-result.png', (140, 140))
-            ###### RENDRE GENERIQUE #############
 
     def manage_deck(self, event):
         """method to manage the deck interaction to show the result
@@ -129,7 +127,6 @@ class EventMouse():
         Args:
             event (pygame object): object pygame who stock all the event who will happend
         """
-        ###### RENDRE GENERIQUE #############
         if self.c_main.m_game.deck_1_rect.collidepoint(event.pos):
             self.c_main.m_game.deck_1 = self.c_main.v_basic.set_an_image(
                 'assets/match-nul.png', (140, 140))
@@ -192,8 +189,6 @@ class EventMouse():
             self.c_main.m_game.deck_4 = self.c_main.v_basic.set_an_image(
                 'assets/match-win-2.png', (140, 140))
             self.c_main.m_round.match[3][2] = 2
-        ###### RENDRE GENERIQUE #############
-        pass
 
     def validate_round(self, event):
         """method to manage validation of a round
@@ -208,7 +203,6 @@ class EventMouse():
             self.c_main.c_round.validate_round(result)
             if self.c_main.m_round.nb_turn < 7:
                 self.c_main.c_round.generate_round()
-                ########### RENDRE GENERIQUE #############
                 self.c_main.m_game.deck_1 = self.c_main.v_basic.set_an_image(
                     'assets/match-no-result.png', (140, 140))
                 self.c_main.m_game.deck_2 = self.c_main.v_basic.set_an_image(
@@ -219,7 +213,6 @@ class EventMouse():
                     'assets/match-no-result.png', (140, 140))
             else:
                 self.c_main.m_game.game_statut = False
-                ########### RENDRE GENERIQUE #############
 
     def update_score(self):
         """method to update the score at the end of a tournament

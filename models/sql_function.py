@@ -16,7 +16,7 @@ class SqlFunction():
         self.cursor = self.connector.cursor()
 
     def get_country(self):
-        """ Method for getting all the country 
+        """ Method for getting all the country
 
         Returns:
             list: list of all country
@@ -159,7 +159,7 @@ class SqlFunction():
         self.connector.commit()
 
     def get_prev_tournament(self):
-        """ Method for getting all the tournament who have been done 
+        """ Method for getting all the tournament who have been done
 
         Returns:
             list: list of all tournament done
@@ -185,7 +185,8 @@ class SqlFunction():
             list: list of data
         """
 
-        self.cursor.execute(
-            f"SELECT name, lastname, score FROM score INNER JOIN player ON score.player_id = player.id WHERE tournament_id = {id_tournament}")
+        sql_request = "SELECT name, lastname, score FROM score" + \
+            f" INNER JOIN player ON score.player_id = player.id WHERE tournament_id = {id_tournament}"
+        self.cursor.execute(sql_request)
         result = self.cursor.fetchall()
         return result

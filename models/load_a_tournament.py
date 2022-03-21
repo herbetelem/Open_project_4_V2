@@ -13,7 +13,7 @@ class LoadATournament:
         Args:
             y (int): position Y of the button
             x (int): position X of the button
-            id_tournament (int): id of the tournament 
+            id_tournament (int): id of the tournament
         """
 
         self.img = pygame.image.load('assets/button/load.png')

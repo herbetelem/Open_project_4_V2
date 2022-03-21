@@ -47,14 +47,15 @@ class Game:
         """ Method who will show the match of the actual round """
 
         self.c_main.v_basic.print_sentence(
-            f"Round match list n°{self.c_main.m_round.nb_turn + 1}", \
-                self.c_main.m_game.font, (400, 50))
+            f"Round match list n°{self.c_main.m_round.nb_turn + 1}", self.c_main.m_game.font, (400, 50))
 
         # match 1
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[0][0].last_name[0]}.{self.c_main.m_round.match[0][0].name[:5]}", self.c_main.m_game.font, (50, 190))
+            f"{self.c_main.m_round.match[0][0].last_name[0]}.{self.c_main.m_round.match[0][0].name[:5]}",
+            self.c_main.m_game.font, (50, 190))
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[0][1].last_name[0]}.{self.c_main.m_round.match[0][1].name[:5]}", self.c_main.m_game.font, (450, 190))
+            f"{self.c_main.m_round.match[0][1].last_name[0]}.{self.c_main.m_round.match[0][1].name[:5]}",
+            self.c_main.m_game.font, (450, 190))
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.deck_1, self.c_main.m_game.deck_1_rect)
         self.c_main.v_basic.manage_view(
@@ -64,9 +65,11 @@ class Game:
 
         # match 2
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[1][0].last_name[0]}.{self.c_main.m_round.match[1][0].name[:5]}", self.c_main.m_game.font, (50, 490))
+            f"{self.c_main.m_round.match[1][0].last_name[0]}.{self.c_main.m_round.match[1][0].name[:5]}",
+            self.c_main.m_game.font, (50, 490))
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[1][1].last_name[0]}.{self.c_main.m_round.match[1][1].name[:5]}", self.c_main.m_game.font, (450, 490))
+            f"{self.c_main.m_round.match[1][1].last_name[0]}.{self.c_main.m_round.match[1][1].name[:5]}",
+            self.c_main.m_game.font, (450, 490))
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.deck_2, self.c_main.m_game.deck_2_rect)
         self.c_main.v_basic.manage_view(
@@ -76,9 +79,11 @@ class Game:
 
         # match 3
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[2][0].last_name[0]}.{self.c_main.m_round.match[2][0].name[:5]}", self.c_main.m_game.font, (650, 190))
+            f"{self.c_main.m_round.match[2][0].last_name[0]}.{self.c_main.m_round.match[2][0].name[:5]}",
+            self.c_main.m_game.font, (650, 190))
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[2][1].last_name[0]}.{self.c_main.m_round.match[2][1].name[:5]}", self.c_main.m_game.font, (1050, 190))
+            f"{self.c_main.m_round.match[2][1].last_name[0]}.{self.c_main.m_round.match[2][1].name[:5]}",
+            self.c_main.m_game.font, (1050, 190))
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.deck_3, self.c_main.m_game.deck_3_rect)
         self.c_main.v_basic.manage_view(
@@ -88,9 +93,11 @@ class Game:
 
         # match 4
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[3][0].last_name[0]}.{self.c_main.m_round.match[3][0].name[:5]}", self.c_main.m_game.font, (650, 490))
+            f"{self.c_main.m_round.match[3][0].last_name[0]}.{self.c_main.m_round.match[3][0].name[:5]}",
+            self.c_main.m_game.font, (650, 490))
         self.c_main.v_basic.print_sentence(
-            f"{self.c_main.m_round.match[3][1].last_name[0]}.{self.c_main.m_round.match[3][1].name[:5]}", self.c_main.m_game.font, (1050, 490))
+            f"{self.c_main.m_round.match[3][1].last_name[0]}.{self.c_main.m_round.match[3][1].name[:5]}",
+            self.c_main.m_game.font, (1050, 490))
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.deck_4, self.c_main.m_game.deck_4_rect)
         self.c_main.v_basic.manage_view(
@@ -117,8 +124,11 @@ class Game:
         x = 40
         y = 40
         for index in range(1, 9):
+            sentence = f"Place {index}: {self.c_main.m_round.players[index-1].name}" + \
+                f"{self.c_main.m_round.players[index-1].last_name}," + \
+                f"score = {self.c_main.m_round.players[index-1].score}"
             self.c_main.v_basic.print_sentence(
-                f"Place {index}: {self.c_main.m_round.players[index-1].name} {self.c_main.m_round.players[index-1].last_name}, score = {self.c_main.m_round.players[index-1].score}", self.c_main.m_game.font, (x, y))
+                sentence, self.c_main.m_game.font, (x, y))
             y += 70
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.save, self.c_main.m_game.save_rect)
@@ -130,8 +140,11 @@ class Game:
         x = 40
         y = 40
         for index in range(1, 9):
+            sentence = f"Place {index}: {self.c_main.m_round.players[index-1].name} " + \
+                f"{self.c_main.m_round.players[index-1].last_name}, " + \
+                f"score = {self.c_main.m_round.players[index-1].score}"
             self.c_main.v_basic.print_sentence(
-                f"Place {index}: {self.c_main.m_round.players[index-1].name} {self.c_main.m_round.players[index-1].last_name}, score = {self.c_main.m_round.players[index-1].score}", self.c_main.m_game.font, (x, y))
+                sentence, self.c_main.m_game.font, (x, y))
             y += 70
         self.c_main.v_basic.manage_view(
             self.c_main.m_game.validate, self.c_main.m_game.validate_rect)

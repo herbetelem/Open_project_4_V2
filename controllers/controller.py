@@ -87,9 +87,11 @@ class ControllerRunGame:
                 self.c_game.update()
             else:
                 # app the image of first menu
-                self.v_basic.manage_view(self.background, (0,0))
-                self.v_basic.manage_view(self.play_button, self.play_button_rect)
-                self.v_basic.manage_view(self.load_button, self.load_button_rect)
+                self.v_basic.manage_view(self.background, (0, 0))
+                self.v_basic.manage_view(
+                    self.play_button, self.play_button_rect)
+                self.v_basic.manage_view(
+                    self.load_button, self.load_button_rect)
 
             # update the screen
             pygame.display.flip()
@@ -114,7 +116,7 @@ class ControllerRunGame:
                     elif self.m_game.next_up and self.m_game.next_rect.collidepoint(event.pos):
                         self.manage_step()
                     elif self.m_game.next_up is False and \
-                        self.m_game.start_rect.collidepoint(event.pos):
+                            self.m_game.start_rect.collidepoint(event.pos):
                         self.c_mouse.manage_end_creation()
 
                     if self.m_game.next_up:
@@ -146,7 +148,7 @@ class ControllerRunGame:
                                     self.m_round.settings = True
                         # Mannage save
                         if self.m_round.nb_turn == 7 and \
-                            self.m_game.save_rect.collidepoint(event.pos):
+                                self.m_game.save_rect.collidepoint(event.pos):
                             self.c_mouse.update_score()
                 # if use keyboard
                 elif event.type == pygame.KEYDOWN:
@@ -154,7 +156,7 @@ class ControllerRunGame:
                     if self.m_game.next_up:
                         # manage the creation of the name
                         if self.m_game.step == "name" or self.m_game.step == "description" or \
-                            self.m_game.step == "player":
+                                self.m_game.step == "player":
                             self.c_key.keybord_abc()
                             if event.key == pygame.K_SPACE:
                                 self.c_key.keyboard_space()
@@ -191,7 +193,9 @@ class ControllerRunGame:
             tmp_location = tmp_location[self.m_game.index_location]
             self.m_tournament.location = tmp_location
         if self.m_game.step == "date":
-            self.m_tournament.date = f"{self.m_tournament.day.str}/{self.m_tournament.month.str}/{self.m_tournament.year.str}"
+            self.m_tournament.date = f"{self.m_tournament.day.str}/" + \
+                f"{self.m_tournament.month.str}/" + \
+                f"{self.m_tournament.year.str}"
         if self.m_game.step == "time":
             if self.m_game.choice == 1:
                 self.m_tournament.time = "bullet"
